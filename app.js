@@ -1,9 +1,15 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const index = require("./");
+const path = require("path");
+
+const port = 3000;
+
+//makes it so express serves images, CSS files, and JavaScript files in a directory named public
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send(index());
 })
 
 app.listen(port, () => {
